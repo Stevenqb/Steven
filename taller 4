@@ -1,0 +1,55 @@
+
+productos={
+    "lapiz": 100,
+    "goma":100,
+    "estuche":500,
+    "plumon":1000
+}
+
+print(productos)
+productos["corrector"]=2000
+print(productos)
+
+
+
+while True:
+    try:
+        print('''
+              1.-agregar articulo y precio 
+              2.-ver listado
+              3.-borrar articulo
+              4.-actualizar precio
+              5.-salir
+              ''')
+        op=int(input("seleccione una opcion "))
+        match op:
+            case 1:
+                art=input("ingrese el nombre del articulo ")
+                precio=int(input("ingrese el precio del articulo "))
+                productos[art]=precio
+            case 2:
+                for nom, precio in productos.items():
+                  print(nom,"$", precio)
+                
+
+            case 3:
+                borrar=input("cual es el articulo que desea borrar? ")
+                del productos=[borrar]
+                print(f"el articulo {borrar} fue borrado ")
+            case 4:
+                for nom, precio in productos.items():
+                    print(nom, "$", precio)
+                art=input("cual es el precio cuyo precio desea actualizar? ")
+                if art in productos:
+                 precio=int(input("ingrese el precio nuevo "))
+                 productos[art]=precio
+                else:
+                    print("el  articulo no existe")
+            case 5:
+                print("saliendo ")
+                break
+            case _:
+                print("opcion invalida")
+    except Exception as error:
+        print("hiciste algo mal " , error)
+
